@@ -21,46 +21,7 @@ app.use('/api/users', userRoute);
 
 // updated data
 // put api
-app.put('/api/users/:id', async(req: Request, res:Response)=>{
-  const {id} = req.params;
-  const {name, password, age, is_active} = req.body;
-  console.log({name, password, age, is_active});
 
-  try {
-    const result = await pool.query(`
-      UPDATE users 
-      SET 
-      name=COALESCE($1, name),
-      password=COALESCE($2, password),
-      age=COALESCE($3, age),
-      is_active=COALESCE($4, is_active)
-      
-      WHERE id=$5 RETURNING *
-      `,
-      [name, password, age, is_active, id]);
-
-      if(result.rows.length === 0){
-         res.status(404).json({
-        success:false,
-        message:"User Not Found!",
-        data:{},
-    })
-      };
-      // console.log(result)
-      res.status(200).json({
-      success: true,
-      message: "Users Updated successfully!",
-      data: result.rows[0],
-    });
-
-  } catch (error:any){
-      res.status(500).json({
-      success:false,
-      message:error.message,
-      error:error,
-    });
-  }
-});
 
 app.delete('/api/users/:id', async(req:Request, res:Response)=>{
   const {id} = req.params;
