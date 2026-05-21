@@ -2,6 +2,7 @@ import express, { type Application, type Request, type Response } from 'express'
 
 import { pool } from './db';
 import { userRoute } from './modules/users/user.route';
+import { profileRoute } from './modules/profile/profile.route';
 const app :Application= express();
 
 app.use(express.json());
@@ -16,52 +17,6 @@ app.get('/', (req : Request, res : Response) => {
 //1 post api create a single user
 app.use('/api/users', userRoute);
 
-// get api get all users
-
-
-// updated data
-// put api
-
-
-
-
-//delete 
-
-
-
-
-// //delete 
-// app.delete("/api/users/:id", async (req: Request, res: Response) => {
-//   const { id } = req.params;
-//   try {
-//     const result = await pool.query(
-//       `
-//     DELETE FROM users WHERE id=$1  
-//       `,
-//       [id],
-//     );
-
-//     console.log(result);
-//     if (result.rowCount === 0) {
-//       res.status(404).json({
-//         success: false,
-//         message: "User Not found!",
-//       });
-//     }
-
-//     res.status(200).json({
-//       success: true,
-//       message: "User deleted successfully!",
-//       data: {},
-//     });
-//   } catch (error: any) {
-//     res.status(500).json({
-//       success: false,
-//       message: error.message,
-//       error: error,
-//     });
-//   }
-// });
-
+app.use('/api/profile', profileRoute);
 
 export default app;
