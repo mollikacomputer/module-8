@@ -12,4 +12,7 @@ router.get('/:id', userContoller.getSingleUsers);
 
 router.put('/:id', userContoller.updateUser);
 
+router.delete("/:id", userContoller.deleteUser);
+
+
 export const userRoute = router;
