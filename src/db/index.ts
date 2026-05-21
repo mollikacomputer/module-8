@@ -11,9 +11,9 @@ export const initDB = async ()=>{
     await pool.query(`
       CREATE TABLE IF NOT EXISTS users(
       id SERIAL PRIMARY KEY,
-      name VARCHAR(20),
+      name VARCHAR(50),
       email VARCHAR(50) UNIQUE NOT NULL,
-      password VARCHAR(20) NOT NULL,
+      password TEXT NOT NULL,
       is_active BOOLEAN DEFAULT true,
       age INT,
 
