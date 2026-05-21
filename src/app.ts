@@ -3,6 +3,7 @@ import express, { type Application, type Request, type Response } from 'express'
 import { pool } from './db';
 import { userRoute } from './modules/users/user.route';
 import { profileRoute } from './modules/profile/profile.route';
+import { authRoute } from './modules/auth/auth.route';
 const app :Application= express();
 
 app.use(express.json());
@@ -16,7 +17,7 @@ app.get('/', (req : Request, res : Response) => {
 
 //1 post api create a single user
 app.use('/api/users', userRoute);
-
 app.use('/api/profile', profileRoute);
+app.use('/api/auth', authRoute);
 
 export default app;
