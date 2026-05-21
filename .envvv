@@ -1,3 +1,4 @@
 /.env
 CONNECTIONSTRING="postgresql://neondb_owner:npg_s5fkG7AoNBVY@ep-quiet-surf-ap15ybnl-pooler.c-7.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
 PORT = 8000
+JWT_SECRET=1490FAS41SAFA1FSqRSw
